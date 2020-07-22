@@ -10,6 +10,20 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <div class="header_container">
+        <%= link_to image_tag('logo.png', class:'header_logo'), '/items' %>
+      </div>
+    </header>
+    <div class="container">
+      <div class="inner_container">
+        <%= yield %>
+      </div>
+    </div>
+    <footer>
+      <div class="footer_container">
+        <div class='footer_logo'>Holiday Planner</div>
+      </div>
+    </footer>
   </body>
 </html>

@@ -1,0 +1,9 @@
+<%= stylesheet_link_tag 'items', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+<% @items.each do |item| %>
+  <div class="item_card">
+    <div><%= item.title %></div>
+    <div><%= item.comment %></div>
+    <div><%= item.url %></div>
+  </div>
+<% end %>
