@@ -17,6 +17,11 @@ class ItemsController < ApplicationController
     redirect_to :action => 'index'
   end
 
+  def edit
+    @item = Item.find(params[:id])
+
+  end
+
   private
     def item_params
       params.require(:item).permit(:title, :comment, :url)
