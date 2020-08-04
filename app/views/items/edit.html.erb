@@ -1,0 +1,32 @@
+<div>アイテムを編集</div>
+
+<%= form_with(model: @item, local: true) do |form| %>
+  <p>
+    <%= form.label :title, 'タイトル' %><br/>
+    <%= form.text_field :title %>
+  </p>
+
+  <p>
+    <%= form.label :comment, 'コメント' %><br>
+    <%= form.text_area :comment %>
+  </p>
+
+  <p>
+    <%= form.label :tag_1, 'タグ1' %><br>
+    <%= form.text_area :tag_1 %>
+  </p>
+
+  <p>
+    <%= form.label :tag_2, 'タグ2' %><br>
+    <%= form.text_area :tag_2 %>
+  </p>
+
+  <p>
+    <%= form.label :url, 'URL' %><br>
+    <%= form.text_area :url %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

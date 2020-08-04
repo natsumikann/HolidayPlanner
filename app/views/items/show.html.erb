@@ -1,12 +1,16 @@
 <%= stylesheet_link_tag 'items', media: 'all', 'data-turbolinks-track': 'reload' %>
 <div class="item_card_large">
-  &nbsp;タイトル<br/>
-  <div class="item_row"><%= @item.title %></div>
-  &nbsp;コメント<br/>
-  <div class="item_row"><%= @item.comment %></div>
-  &nbsp;URL<br/>
-  <div class="item_row"><%= @item.url %></div>
+  <div class="item_card_large_inner">
+    &nbsp;タイトル<br/>
+    <div class="item_row"><%= @item.title %></div>
+    &nbsp;コメント<br/>
+    <div class="item_row"><%= @item.comment %></div>
+    &nbsp;URL<br/>
+    <div class="item_row"><%= @item.url %></div>
+  </div>
+
+  <%= link_to(edit_item_path) do %>
+    <div class="material-icons edit_pen">edit</div>
+  <% end %>
 </div>
-<%= link_to(edit_item_path) do %>
-  <div class="material-icons edit_pen">edit</div>
-<% end %>
+

@@ -19,6 +19,7 @@ html {
 
 body {
     margin: 0px;
+    height: auto;
 }
 
 body header .header_container {
@@ -27,20 +28,21 @@ body header .header_container {
 }
 
 body .container {
-    min-height: 800px;
+    height: 100vh;
     background: #f8faf9;
-    position: relative;
 }
 
 body .inner_container {
-    position: absolute;
+    position: relative;
     margin-right: auto;
     margin-left: auto;
+    margin-bottom: 300px;
     width: 900px;
     top: 100px;
     bottom: 0;
     left: 0;
     right: 0;
+    height: auto;
 }
 
 .header_logo {
@@ -54,6 +56,7 @@ body footer .footer_container {
     position: relative;
     background: #117a65;
     height: 200px;
+    bottom: 0;
 }
 
 .footer_logo {

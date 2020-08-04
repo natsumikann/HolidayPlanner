@@ -11,15 +11,17 @@
     <%= form.text_area :comment %>
   </p>
 
-  <p>
-    <%= form.label :tag_1, 'タグ1' %><br>
-    <%= form.text_area :tag_1 %>
-  </p>
+  <%= fields_for :tag do |tag_form| %>
+    <p>
+      <%= tag_form.label :tag_1, 'タグ1' %><br>
+      <%= tag_form.text_area :tag_1 %>
+    </p>
 
-  <p>
-    <%= form.label :tag_2, 'タグ2' %><br>
-    <%= form.text_area :tag_2 %>
-  </p>
+    <p>
+      <%= tag_form.label :tag_2, 'タグ2' %><br>
+      <%= tag_form.text_area :tag_2 %>
+    </p>
+  <% end %>
 
   <p>
     <%= form.label :url, 'URL' %><br>
