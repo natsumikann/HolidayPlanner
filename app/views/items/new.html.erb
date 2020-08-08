@@ -28,6 +28,13 @@
     <%= form.text_area :url %>
   </p>
 
+  <%= fields_for :photo do |photo_form| %>
+    <p>
+      <%= photo_form.label :image, '画像' %>
+      <%= photo_form.file_field :image %>
+    </p>
+  <% end %>
+
   <p>
     <%= form.submit %>
   </p>

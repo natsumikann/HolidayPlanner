@@ -8,13 +8,13 @@ $(window).on("scroll", function(){
         console.log(footerHeight);
         $(".add_box").css({
             position: "absolute",
-            bottom: 10
+            bottom: 230
         })
     }
     else{
         $(".add_box").css({
             position: "fixed",
-            bottom: 10
+            bottom: 30
         })
     }
 })
