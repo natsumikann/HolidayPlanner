@@ -43,6 +43,7 @@ body .inner_container {
     left: 0;
     right: 0;
     height: auto;
+    min-height: 100vh;
 }
 
 .header_logo {
