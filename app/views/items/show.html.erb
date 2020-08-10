@@ -2,8 +2,10 @@
 <div class="item_card_large">
   <div class="item_card_large_inner">
     <div class="item_photo_area fl">
-      <% if @photo.image? %>
-        <%= image_tag @photo.image.url, class: "photo" %>
+      <% unless @photo.nil? %>
+        <% if @photo.image? %>
+          <%= image_tag @photo.image.url, class: "photo" %>
+        <% end %>
       <% end %>
     </div>
     <div class="info_area fl">
