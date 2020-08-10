@@ -38,7 +38,7 @@ class ItemsController < ApplicationController
     # save photo
     @photo = Photo.create!(image: params[:item][:image], item_id: @item.id)
 
-    redirect_to :action => 'index'
+    redirect_to items_path
   end
 
   def edit
