@@ -73,3 +73,15 @@ body footer .footer_container {
     background: #117a65;
     font-size: 20px;
 }
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.cb {
+    clear: both;
+}

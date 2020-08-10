@@ -1,6 +1,6 @@
 <div>新しいアイテムを追加</div>
 <br/><br/>
-<%= form_with scope: :item, url: items_path, local: true do |form| %>
+<%= form_with scope: :item, url: items_path, local: true, multipart: true do |form| %>
   <p>
     <%= form.label :title, 'タイトル' %><br/>
     <%= form.text_field :title %>
@@ -28,12 +28,15 @@
     <%= form.text_area :url %>
   </p>
 
-  <%= fields_for :photo do |photo_form| %>
-    <p>
-      <%= photo_form.label :image, '画像' %>
-      <%= photo_form.file_field :image %>
-    </p>
-  <% end %>
+  <%#= fields_for :photo do |photo_form| %>
+<!--    <p>-->
+      <%#= photo_form.label :image, '画像' %>
+      <%#= photo_form.file_field :image %>
+<!--    </p>-->
+  <%# end %>
+
+  <%= form.label :image, '画像' %>
+  <%= form.file_field :image %>
 
   <p>
     <%= form.submit %>

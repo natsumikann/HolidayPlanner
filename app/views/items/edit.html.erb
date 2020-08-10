@@ -1,6 +1,6 @@
 <div>アイテムを編集</div>
 
-<%= form_with(model: @item, local: true) do |form| %>
+<%= form_with(model: @item, local: true, multipart: true) do |form| %>
   <p>
     <%= form.label :title, 'タイトル' %><br/>
     <%= form.text_field :title %>
@@ -11,20 +11,31 @@
     <%= form.text_area :comment %>
   </p>
 
-  <p>
-    <%= form.label :tag_1, 'タグ1' %><br>
-    <%= form.text_area :tag_1 %>
-  </p>
+  <%= fields_for :tag do |tag_form| %>
+    <p>
+      <%= tag_form.label :tag_1, 'タグ1' %><br>
+      <%= tag_form.text_area :tag_1, value: @tag_1.name %>
+    </p>
 
-  <p>
-    <%= form.label :tag_2, 'タグ2' %><br>
-    <%= form.text_area :tag_2 %>
-  </p>
+    <p>
+      <%= tag_form.label :tag_2, 'タグ2' %><br>
+      <%= tag_form.text_area :tag_2, value: @tag_2.name %>
+    </p>
+  <% end %>
 
   <p>
     <%= form.label :url, 'URL' %><br>
     <%= form.text_area :url %>
   </p>
+
+  <%= form.label :image, '画像' %>
+  <%= form.file_field :image %>
+
+  <%= form.hidden_field :tag_1_id, value: @tag_1.id %>
+  <%= form.hidden_field :tag_2_id, value: @tag_2.id %>
+  <%= form.hidden_field :item_tag_1_id, value: @item_tag_1.id %>
+  <%= form.hidden_field :item_tag_2_id, value: @item_tag_2.id %>
+  <%= form.hidden_field :photo_id, value: @photo.id %>
 
   <p>
     <%= form.submit %>

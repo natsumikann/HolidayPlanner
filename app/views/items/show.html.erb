@@ -1,12 +1,22 @@
 <%= stylesheet_link_tag 'items', media: 'all', 'data-turbolinks-track': 'reload' %>
 <div class="item_card_large">
   <div class="item_card_large_inner">
-    &nbsp;タイトル<br/>
-    <div class="item_row"><%= @item.title %></div>
-    &nbsp;コメント<br/>
-    <div class="item_row"><%= @item.comment %></div>
-    &nbsp;URL<br/>
-    <div class="item_row"><%= @item.url %></div>
+    <div class="item_photo_area fl">
+      <% if @photo.image? %>
+        <%= image_tag @photo.image.url, class: "photo" %>
+      <% end %>
+    </div>
+    <div class="info_area fl">
+      &nbsp;タイトル<br/>
+      <div class="item_row"><%= @item.title %></div>
+      &nbsp;コメント<br/>
+      <div class="item_row"><%= @item.comment %></div>
+      &nbsp;URL<br/>
+      <div class="item_row"><%= @item.url %></div>
+      &nbsp;タグ<br/>
+      <div class="item_row"><%= @tag_1.name %>, <%= @tag_2.name %></div>
+    </div>
+    <div class="cb"></div>
   </div>
 
   <%= link_to(edit_item_path) do %>
