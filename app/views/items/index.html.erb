@@ -3,9 +3,9 @@
 <% @items.each do |item| %>
   <%= link_to(item_path(item.id)) do %>
     <div class="item_card">
-      <div><%= item.title %></div>
-      <div><%= item.comment %></div>
-      <div><%= item.url %></div>
+      <div>タイトル：<%= item.title %></div>
+      <div>コメント：<%= item.comment %></div>
+      <div>URL：<%= item.url %></div>
     </div>
   <% end %>
 <% end %>

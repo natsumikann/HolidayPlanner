@@ -5,6 +5,10 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @photo = Photo.find_by(item_id: @item.id)
+    item_tags = ItemTag.find_by_sql("select * from item_tags where item_id = #{@item.id};")
+    @tag_1 = Tag.find(item_tags[0].tag_id)
+    @tag_2 = Tag.find(item_tags[1].tag_id)
   end
 
   def new
@@ -32,22 +36,48 @@ class ItemsController < ApplicationController
     @item_tag_2 = ItemTag.create!(item_id: @item.id, tag_id: @tag_2.id)
 
     # save photo
-    @photo = Photo.create!(photo_params(@item.id))
+    @photo = Photo.new(image: params[:item][:image], item_id: @item.id)
 
-    redirect_to :action => 'index'
+    if @photo.save
+      redirect_to :action => 'index'
+    else
+      print 'error'
+    end
+
   end
 
   def edit
     @item = Item.find(params[:id])
+    item_tags = ItemTag.find_by_sql("select * from item_tags where item_id = #{@item.id};")
+    @item_tag_1 = item_tags[0]
+    @item_tag_2 = item_tags[1]
+    if @item_tag_1.nil?
+      @tag_1 = Tag.new
+      @tag_2 = Tag.new
+    else
+      @tag_1 = Tag.find(@item_tag_1.tag_id)
+      @tag_2 = Tag.find(@item_tag_2.tag_id)
+    end
+    @photo = Photo.find_by(item_id: @item.id)
+    @photo.image.cache! unless @photo.image.blank?
   end
 
   def update
     @item = Item.find(params[:id])
-    if @item.update(item_params)
-      redirect_to @item
-    else
-      render 'edit'
+    @tag_1 = Tag.find(params[:item][:tag_1_id])
+    @tag_2 = Tag.find(params[:item][:tag_2_id])
+    @photo = Photo.find(params[:item][:photo_id])
+    # @item_tag_1 = ItemTag.find(params[:item_tag_1_id])
+    # @item_tag_2 = ItemTag.find(params[:item_tag_2_id])
+
+    @item.update(item_params)
+    @tag_1.update(name: params[:tag][:tag_1])
+    @tag_2.update(name: params[:tag][:tag_2])
+    unless params[:item][:image].nil?
+      @photo.update(photo_params)
     end
+    
+    redirect_to @item
   end
 
   private
@@ -55,8 +85,8 @@ class ItemsController < ApplicationController
       params.require(:item).permit(:title, :comment, :url)
     end
 
-    def photo_params(itemid)
-      params.require(:photo).permit(:image).merge(item_id: itemid)
+    def photo_params
+      params.require(:item).permit(:image)
     end
 
   # private finished
