@@ -4,8 +4,6 @@ $(window).on("scroll", function(){
     footerHeight = $(".footer_container").outerHeight();
 
     if (documentHeight - scrollPosition <= footerHeight){
-        console.log(documentHeight);
-        console.log(footerHeight);
         $(".add_box").css({
             position: "absolute",
             bottom: 230
