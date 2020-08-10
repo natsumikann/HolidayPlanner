@@ -36,14 +36,9 @@ class ItemsController < ApplicationController
     @item_tag_2 = ItemTag.create!(item_id: @item.id, tag_id: @tag_2.id)
 
     # save photo
-    @photo = Photo.new(image: params[:item][:image], item_id: @item.id)
+    @photo = Photo.create!(image: params[:item][:image], item_id: @item.id)
 
-    if @photo.save
-      redirect_to :action => 'index'
-    else
-      print 'error'
-    end
-
+    redirect_to :action => 'index'
   end
 
   def edit
@@ -76,7 +71,7 @@ class ItemsController < ApplicationController
     unless params[:item][:image].nil?
       @photo.update(photo_params)
     end
-    
+
     redirect_to @item
   end
 
